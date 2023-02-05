@@ -2,24 +2,10 @@ radio.onReceivedNumber(function (receivedNumber) {
     basic.showString("" + (receivedNumber))
 })
 radio.onReceivedValue(function (name, value) {
-    if (name.compare("X") == 0) {
+    if (name == "x") {
         X = value
-    }
-    if (name.compare("Y") == 0) {
+    } else if (name == "y") {
         Y = value
-    }
-    if ((X > 470 || X < 530) && Y > 980) {
-        basic.showString("Forward")
-        TPBot.setTravelTime(TPBot.DriveDirection.Forward, 50, 2)
-    } else if ((X > 470 || X < 530) && Y < 40) {
-        basic.showString("Backward")
-        TPBot.setTravelTime(TPBot.DriveDirection.Backward, 50, 2)
-    } else if (X > 980 && (Y > 470 || Y < 530)) {
-        basic.showString("Left")
-        TPBot.setTravelTime(TPBot.DriveDirection.Left, 50, 0.5)
-    } else if (X < 40 && (Y > 470 || Y < 530)) {
-        basic.showString("Right")
-        TPBot.setTravelTime(TPBot.DriveDirection.Right, 50, 0.5)
     }
 })
 let Y = 0
@@ -28,3 +14,6 @@ basic.showIcon(IconNames.Heart)
 radio.setGroup(7)
 X = 520
 Y = 520
+basic.forever(function () {
+    TPBot.setWheels(Y + X, Y - X)
+})
