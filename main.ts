@@ -18,12 +18,16 @@ radio.onReceivedValue(function (name, value) {
         Y = value
     }
     if ((X > 470 || X < 530) && Y > 980) {
+        basic.showString("Forward")
         TPBot.setTravelTime(TPBot.DriveDirection.Forward, 50, 2)
     } else if ((X > 470 || X < 530) && Y < 40) {
+        basic.showString("Backward")
         TPBot.setTravelTime(TPBot.DriveDirection.Backward, 50, 2)
     } else if (X > 980 && (Y > 470 || Y < 530)) {
+        basic.showString("Left")
         TPBot.setTravelTime(TPBot.DriveDirection.Left, 50, 0.5)
     } else if (X < 40 && (Y > 470 || Y < 530)) {
+        basic.showString("Right")
         TPBot.setTravelTime(TPBot.DriveDirection.Right, 50, 0.5)
     }
 })
