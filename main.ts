@@ -1,14 +1,5 @@
 radio.onReceivedNumber(function (receivedNumber) {
     basic.showString("" + (receivedNumber))
-    if (receivedNumber == 1) {
-        TPBot.setTravelTime(TPBot.DriveDirection.Left, 50, 0.5)
-    } else if (receivedNumber == 2) {
-        TPBot.setTravelTime(TPBot.DriveDirection.Forward, 50, 2)
-    } else if (receivedNumber == 3) {
-        TPBot.setTravelTime(TPBot.DriveDirection.Backward, 50, 2)
-    } else if (receivedNumber == 4) {
-        TPBot.setTravelTime(TPBot.DriveDirection.Right, 50, 0.5)
-    }
 })
 radio.onReceivedValue(function (name, value) {
     if (name.compare("X") == 0) {
