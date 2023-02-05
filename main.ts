@@ -11,12 +11,17 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
 })
 radio.onReceivedValue(function (name, value) {
-    if (name.compare("X") == 0) {
+    if (name == "x") {
         X = value
-    }
-    if (name.compare("Y") == 0) {
+    } else if (name == "y") {
         Y = value
     }
+})
+let Y = 0
+let X = 0
+basic.showIcon(IconNames.Heart)
+radio.setGroup(7)
+basic.forever(function () {
     if ((X > 470 || X < 530) && Y > 980) {
         TPBot.setTravelTime(TPBot.DriveDirection.Forward, 50, 2)
     } else if ((X > 470 || X < 530) && Y < 40) {
@@ -27,9 +32,3 @@ radio.onReceivedValue(function (name, value) {
         TPBot.setTravelTime(TPBot.DriveDirection.Right, 50, 0.5)
     }
 })
-let Y = 0
-let X = 0
-basic.showIcon(IconNames.Heart)
-radio.setGroup(7)
-X = 520
-Y = 520
